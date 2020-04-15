@@ -1,20 +1,20 @@
 package com.example.appcm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
-    @Override
+public class ViernesSantoActivity extends AppCompatActivity {
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
+        setContentView(R.layout.viernessanto_activity);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.fotos:
 //                lblMensaje.setText("¡Nuestras Fotos!");;
-                Intent i1 = new Intent(this, NoticiasActivity.class);
+                Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
 //                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
-                Intent i2 = new Intent(this, NoticiasActivity.class);
+                Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
                 finish();
                 return true;
