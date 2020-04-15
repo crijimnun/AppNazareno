@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!---    xmlns:android="http://nazarenoyesperanza.es/apk/res/android">
+    <item android:id="@+id/noticias" android:title="Noticias"></item>
+    <item android:id="@+id/fotos" android:title="Fotos"></item>
+    <item android:id="@+id/viernesSanto" android:title="Viernes Santo"></item>
+    -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/noticias" android:title="@string/menu_noticias"
+    android:icon="@android:drawable/ic_menu_preferences">
+</item>
+<item android:id="@+id/fotos" android:title="@string/menu_fotos"
+    android:icon="@android:drawable/ic_menu_preferences">
+</item>
+
+<item android:id="@+id/viernesSanto" android:title="@string/menu_viernes"
+    android:icon="@android:drawable/ic_menu_preferences">
+</item>
+
+
+
+    </menu>
