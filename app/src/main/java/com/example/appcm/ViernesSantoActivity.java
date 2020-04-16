@@ -8,9 +8,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
 
 public class ViernesSantoActivity extends AppCompatActivity
         implements OnMapReadyCallback {
@@ -28,11 +31,13 @@ public class ViernesSantoActivity extends AppCompatActivity
 
         mapFragment.getMapAsync(this);
     }
-    
-    public void onMapReady(GoogleMap map) {
-        mapa = map;
-    }
 
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng casariche = new LatLng(37.2911299,-4.7590719);
+        CameraPosition cameraPosition= CameraPosition.builder()
+                .target(casariche).zoom(15).build();
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
