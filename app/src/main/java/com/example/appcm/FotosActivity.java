@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FotosActivity extends AppCompatActivity {
 
     GridView gridView;
-    String[] fruitNames = {"Apple","Orange","strawberry","Melon","Kiwi","Banana"};
-    int[] fruitImages = {R.drawable.apple,R.drawable.oranges,R.drawable.strawberry,R.drawable.watermelon,R.drawable.kiwi,R.drawable.banana};
+    String[] Names = {"Viernes Santo 2017", "II Torneo de Padel 2016","V Zambombá 2016 Solidaria Nazareno y Esperanza"};
+    int[] Images = {R.drawable.viernes_santo, R.drawable.padel, R.drawable.zambomba};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +33,8 @@ public class FotosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),GridItemActivity.class);
-                intent.putExtra("name",fruitNames[position]);
-                intent.putExtra("image",fruitImages[position]);
+                intent.putExtra("name",Names[position]);
+                intent.putExtra("image",Images[position]);
                 startActivity(intent);
             }
         });
@@ -44,7 +44,7 @@ public class FotosActivity extends AppCompatActivity {
     private class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return fruitImages.length ;
+            return Images.length ;
         }
 
         @Override
@@ -64,8 +64,8 @@ public class FotosActivity extends AppCompatActivity {
             TextView name = view1.findViewById(R.id.fruits);
             ImageView image = view1.findViewById(R.id.images);
 
-            name.setText(fruitNames[position]);
-            image.setImageResource(fruitImages[position]);
+            name.setText(Names[position]);
+            image.setImageResource(Images[position]);
 
             return view1;
         }

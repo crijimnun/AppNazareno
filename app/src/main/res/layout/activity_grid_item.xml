@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
-        android:text="Apple"
+        android:text="Padel"
         android:textColor="#000"
         android:textSize="30dp" />
 
@@ -21,7 +21,7 @@
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/apple"
+        android:src="@drawable/padel"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/griddata"
         android:layout_marginTop="27dp" />
