@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FotosActivity extends AppCompatActivity {
 
     GridView gridView;
-    String[] Names = {"Viernes Santo 2017", "II Torneo de Padel 2016","V Zambombá 2016 Solidaria Nazareno y Esperanza"};
+    String[] Names = {"Viernes Santo 2017", "II Torneo de Padel 2016","V Zambombá 2016"};
     int[] Images = {R.drawable.viernes_santo, R.drawable.padel, R.drawable.zambomba};
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class FotosActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View view1 = getLayoutInflater().inflate(R.layout.fila_data,null);
 
-            TextView name = view1.findViewById(R.id.fruits);
+            TextView name = view1.findViewById(R.id.nombre_foto);
             ImageView image = view1.findViewById(R.id.images);
 
             name.setText(Names[position]);
