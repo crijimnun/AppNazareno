@@ -30,7 +30,7 @@
             android:layout_height="130dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/padel"
+            android:src="@drawable/padel2016"
             android:background="#980D8D"/>
 
     </RelativeLayout>

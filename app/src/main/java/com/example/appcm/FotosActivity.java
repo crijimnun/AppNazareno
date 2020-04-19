@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FotosActivity extends AppCompatActivity {
 
     GridView gridView;
-    String[] Names = {"Viernes Santo 2017", "II Torneo de Padel 2016","V Zambombá 2016"};
-    int[] Images = {R.drawable.viernes_santo, R.drawable.padel, R.drawable.zambomba};
+    String[] Names = {"Viernes Santo 2017","Zambombá 2017", "II Torneo de Padel 2016","Zambombá 2016"};
+    int[] Images = {R.drawable.viernes_santo2017,R.drawable.zambomba2017, R.drawable.padel2016, R.drawable.zambomba2016};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
