@@ -1,76 +1,78 @@
 package com.example.appcm;
 
+import android.app.DownloadManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.DownloadListener;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FotosActivity extends AppCompatActivity {
 
-    GridView gridView;
-    String[] Names = {"Viernes Santo 2017","Zambombá 2017", "II Torneo de Padel 2016","Zambombá 2016"};
-    int[] Images = {R.drawable.viernes_santo2017,R.drawable.zambomba2017, R.drawable.padel2016, R.drawable.zambomba2016};
+    WebView wv;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fotos_activity);
 
-        gridView = findViewById(R.id.gridview);
+        wv = (WebView) findViewById(R.id.wv);
+        wv.loadUrl("https://drive.google.com/drive/folders/1kdKI5hQfGfD3eXxZD-HM31p5VPZjDwVq?usp=sharing");
 
-        CustomAdapter customAdapeter = new CustomAdapter();
-        gridView.setAdapter(customAdapeter);
+        wv.setWebViewClient(new client());
+        WebSettings ws = wv.getSettings();
+        ws.setJavaScriptEnabled(true);
+        wv.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        wv.clearCache(true);
+        wv.clearHistory();
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        wv.setDownloadListener(new DownloadListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),GridItemActivity.class);
-                intent.putExtra("name",Names[position]);
-                intent.putExtra("image",Images[position]);
-                startActivity(intent);
+            public void onDownloadStart(String url, String s1, String s2, String s3, long l) {
+
+                DownloadManager.Request req = new DownloadManager.Request(Uri.parse(url));
+                req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                dm.enqueue(req);
+
+                Toast.makeText(getApplicationContext(), "Downloading started.....", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private class CustomAdapter extends BaseAdapter {
+    private class client extends WebViewClient {
+
         @Override
-        public int getCount() {
-            return Images.length ;
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
         }
 
         @Override
-        public Object getItem(int position) {
-            return null;
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
         }
 
         @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View view1 = getLayoutInflater().inflate(R.layout.fila_data,null);
-
-            TextView name = view1.findViewById(R.id.nombre_foto);
-            ImageView image = view1.findViewById(R.id.images);
-
-            name.setText(Names[position]);
-            image.setImageResource(Images[position]);
-
-            return view1;
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
         }
     }
-
 
 
 
@@ -105,6 +107,7 @@ public class FotosActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 
 }
