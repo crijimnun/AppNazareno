@@ -1,13 +1,17 @@
 package com.example.appcm;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,9 +40,45 @@ public class ViernesSantoActivity extends AppCompatActivity
     }
 
     public void onMapReady(GoogleMap googleMap) {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            mapa=googleMap;
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    10);
+        } else {
 
-        googleMap.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(true);
 
+            rutaCofradia(googleMap);
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 10) {
+            if (grantResults.length == 1
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                //Permiso concedido
+
+
+                mapa.setMyLocationEnabled(true);
+
+                rutaCofradia(mapa);
+
+            } else {
+                //Permiso denegado:
+                //Deberíamos deshabilitar toda la funcionalidad relativa a la localización.
+
+                Log.e("Mensaje", "Permiso denegado");
+
+                rutaCofradia(mapa);
+            }
+        }
+    }
+
+
+    public void rutaCofradia (GoogleMap googleMap){
         LatLng casariche = new LatLng(37.293972, -4.760576);
 
         googleMap.addPolyline(new PolylineOptions()
@@ -74,9 +114,6 @@ public class ViernesSantoActivity extends AppCompatActivity
         CameraPosition cameraPosition= CameraPosition.builder()
                 .target(casariche).zoom(16).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-       // googleMap.setMyLocationEnabled(true);
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
