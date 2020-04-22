@@ -36,6 +36,9 @@ public class ViernesSantoActivity extends AppCompatActivity
     }
 
     public void onMapReady(GoogleMap googleMap) {
+
+        googleMap.setMyLocationEnabled(true);
+
         LatLng casariche = new LatLng(37.293972, -4.760576);
 
         googleMap.addPolyline(new PolylineOptions()
@@ -72,6 +75,7 @@ public class ViernesSantoActivity extends AppCompatActivity
                 .target(casariche).zoom(16).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
+       // googleMap.setMyLocationEnabled(true);
 
     }
 
