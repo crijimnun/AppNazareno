@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        TextView lblMensaje= (TextView) findViewById(R.id.lblMensaje);
+
         switch (item.getItemId()) {
             case R.id.noticias:
 //                lblMensaje.setText("¡Últimas Noticias!");
@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.fotos:
 //                lblMensaje.setText("¡Nuestras Fotos!");;
-                Intent i1 = new Intent(this, NoticiasActivity.class);
+                Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
 //                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
-                Intent i2 = new Intent(this, NoticiasActivity.class);
+                Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
                 finish();
                 return true;
