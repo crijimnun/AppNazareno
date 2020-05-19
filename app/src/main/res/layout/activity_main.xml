@@ -7,7 +7,7 @@
     android:background="#000D9888"
     tools:context=".MainActivity">
 
-    <ImageView
+<!--    <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/logo" />
+        app:srcCompat="@mipmap/logo" />-->
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -35,11 +41,10 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:typeface="sans"
-        android:textAlignment="center"
         app:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/image2"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
