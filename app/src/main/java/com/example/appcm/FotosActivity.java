@@ -22,15 +22,34 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
 public class FotosActivity extends AppCompatActivity {
 
     WebView wv;
+    String img1 = "https://scontent.fsvq2-2.fna.fbcdn.net/v/t1.0-9/95097018_2892641654153540_3454090799128510464_o.jpg?_nc_cat=108&_nc_sid=730e14&_nc_ohc=FEnDjPDI06MAX-nptH1&_nc_ht=scontent.fsvq2-2.fna&oh=e8b1a5d10187a1f40c026b95f187da2f&oe=5EE9681E";
+    String img2 = "https://scontent.fsvq2-1.fna.fbcdn.net/v/t1.0-9/97119507_2933499373401101_3751680677817352192_n.jpg?_nc_cat=103&_nc_sid=8bfeb9&_nc_ohc=Abfim3sjenYAX9hHiK8&_nc_ht=scontent.fsvq2-1.fna&oh=a45d6000287a31c12ebcf96606ec6d3f&oe=5EE7A265";
+    ImageView i;
+    ImageView i2;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fotos_activity);
 
-        wv = (WebView) findViewById(R.id.wv);
+
+
+        i = findViewById(R.id.imageView1);
+        i2 = findViewById(R.id.imageView2);
+
+        Picasso.get().load(img1).into(i);
+        Picasso.get().load(img2).into(i2);
+
+
+
+
+       /* wv = (WebView) findViewById(R.id.wv);
         wv.loadUrl("https://drive.google.com/drive/folders/1kdKI5hQfGfD3eXxZD-HM31p5VPZjDwVq?usp=sharing");
 
         wv.setWebViewClient(new client());
@@ -51,7 +70,7 @@ public class FotosActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "Downloading started.....", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 
