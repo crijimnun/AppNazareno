@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         i = findViewById(R.id.image2);
         Picasso.get().load(img2).into(i);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         
     }
 
