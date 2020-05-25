@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -19,14 +20,21 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ViernesSantoActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
 
     private GoogleMap mapa;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +86,10 @@ public class ViernesSantoActivity extends AppCompatActivity
     }
 
 
-    public void rutaCofradia (GoogleMap googleMap){
+    public void rutaCofradia (final GoogleMap googleMap){
         LatLng casariche = new LatLng(37.293972, -4.760576);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(37.295660, -4.759148), new LatLng(37.295359, -4.759039)
@@ -107,6 +117,26 @@ public class ViernesSantoActivity extends AppCompatActivity
                 )
                 .width(7)
                 .color(Color.RED));
+
+        mDatabase.child("posicionCofradia").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    Double latitud = Double.parseDouble(dataSnapshot.child("Latitud").getValue().toString());
+                    Double longitud = Double.parseDouble(dataSnapshot.child("Longitud").getValue().toString());
+
+                    MarkerOptions mark = new MarkerOptions().position(new LatLng(latitud, longitud)).title("Cofradia");
+
+                    googleMap.addMarker(mark);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         googleMap.addMarker(new MarkerOptions().position(new LatLng(37.295660, -4.759148))
                 .title("Salida"));
