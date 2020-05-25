@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "874617416949",
+    "firebase_url": "https://appnazareno-27d50.firebaseio.com",
+    "project_id": "appnazareno-27d50",
+    "storage_bucket": "appnazareno-27d50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874617416949:android:72d0556493be7b8a8b69bc",
+        "android_client_info": {
+          "package_name": "com.example.appcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874617416949-vemvu8cr1v82td96u2m34nnt9h0pc3p7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appcm",
+            "certificate_hash": "f3f6388ba5076adb2fca00a7613452595ebd0664"
+          }
+        },
+        {
+          "client_id": "874617416949-9kotrbqkvdfhnthbceuabv8fvpcg55od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0e5cChhwbCJjHmS1TWtGSim4yKmoJG2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874617416949-9kotrbqkvdfhnthbceuabv8fvpcg55od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
