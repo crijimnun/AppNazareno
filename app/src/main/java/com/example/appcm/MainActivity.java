@@ -48,22 +48,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.pagHome:
+                Intent i3 = new Intent(this, MainActivity.class);
+                startActivity(i3);
+                finish();
+                return true;
             case R.id.noticias:
-//                lblMensaje.setText("¡Últimas Noticias!");
                 Intent i = new Intent(this, NoticiasActivity.class);
                 startActivity(i);
                 finish();
                 return true;
             case R.id.fotos:
-//                lblMensaje.setText("¡Nuestras Fotos!");;
                 Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
                 Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
+                finish();
+                return true;
+            case R.id.IniSesion:
+                Intent i4 = new Intent(this, LoginActivity.class);
+                startActivity(i4);
                 finish();
                 return true;
             default:

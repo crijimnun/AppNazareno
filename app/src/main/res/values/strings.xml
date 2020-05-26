@@ -3,4 +3,7 @@
     <string name="menu_noticias">Noticias</string>
     <string name="menu_fotos">Fotos</string>
     <string name="menu_viernes">Viernes Santo</string>
+    <string name="menu_inicio">Inicio</string>
+    <string name="menu_registro">Inicio Sesión</string>
+
 </resources>

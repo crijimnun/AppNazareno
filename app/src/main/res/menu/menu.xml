@@ -18,4 +18,11 @@
     android:icon="@android:drawable/ic_menu_preferences">
 </item>
 
+    <item android:id="@+id/pagHome" android:title="@string/menu_inicio"
+        android:icon="@android:drawable/ic_menu_preferences">
+    </item>
+    <item android:id="@+id/IniSesion" android:title="@string/menu_registro"
+        android:icon="@android:drawable/ic_menu_preferences">
+    </item>
+
     </menu>

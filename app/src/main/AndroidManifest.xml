@@ -50,6 +50,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.appcm.MainActivity" />
         </activity>
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.appcm.MainActivity" />
+        </activity>
 
 
         <meta-data

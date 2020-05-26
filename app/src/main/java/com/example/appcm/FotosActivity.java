@@ -102,8 +102,13 @@ public class FotosActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        TextView lblMensaje= findViewById(R.id.lblMensaje);
+
         switch (item.getItemId()) {
+            case R.id.pagHome:
+                Intent i3 = new Intent(this, MainActivity.class);
+                startActivity(i3);
+                finish();
+                return true;
             case R.id.noticias:
 //                lblMensaje.setText("¡Últimas Noticias!");
                 Intent i = new Intent(this, NoticiasActivity.class);
@@ -120,6 +125,12 @@ public class FotosActivity extends AppCompatActivity {
 //                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
                 Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
+                finish();
+                return true;
+            case R.id.IniSesion:
+//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
+                Intent i4 = new Intent(this, LoginActivity.class);
+                startActivity(i4);
                 finish();
                 return true;
             default:

@@ -1,41 +1,43 @@
 package com.example.appcm;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
-public class NoticiasActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-
-    WebView miVisorWeb;
-    String url = "https://www.nazarenoyesperanza.es";
-
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.noticias_activity);
-
-
-        miVisorWeb = (WebView) findViewById(R.id.noticiasweb);
-
-        final WebSettings ajustesVisorWeb = miVisorWeb.getSettings();
-        ajustesVisorWeb.setJavaScriptEnabled(true);
-
-        miVisorWeb.loadUrl(url);
+        setContentView(R.layout.login_activity);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
+
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
 
     }
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -46,25 +48,21 @@ public class NoticiasActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.noticias:
-//                lblMensaje.setText("¡Últimas Noticias!");
                 Intent i = new Intent(this, NoticiasActivity.class);
                 startActivity(i);
                 finish();
                 return true;
             case R.id.fotos:
-//                lblMensaje.setText("¡Nuestras Fotos!");;
                 Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
                 Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
                 finish();
                 return true;
             case R.id.IniSesion:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
                 Intent i4 = new Intent(this, LoginActivity.class);
                 startActivity(i4);
                 finish();
@@ -73,6 +71,4 @@ public class NoticiasActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
