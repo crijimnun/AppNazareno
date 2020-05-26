@@ -37,13 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
 
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
