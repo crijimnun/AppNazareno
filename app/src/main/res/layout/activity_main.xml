@@ -27,8 +27,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="723dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="50dp"
             android:lineSpacingExtra="14sp"
             android:text="La Hermandad de Ntro. Padre Jesús Nazareno y María Stma. de la Esperanza de Casariche (Sevilla), resulta difícil datarla en sus orígenes por falta de documentación, no obstante, se cree que es de finales del Siglo XVII, poco después de la erección de la Parroquia en 1676. En ella se venera y da culto a una Imagen de Jesús con la cruz a cuestas de autoría anónima. Esta Imagen de Jesús Nazareno, fue la única que se salvó del saqueo e incendio que en Julio de 1936 sufrió la Parroquia, siendo pues la más antigua de las que se veneran en Casariche, gozando por ello de gran devoción popular.
