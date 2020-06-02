@@ -77,7 +77,6 @@ public class ViernesSantoActivity extends AppCompatActivity
 
             } else {
                 //Permiso denegado:
-                //Deberíamos deshabilitar toda la funcionalidad relativa a la localización.
 
                 Log.e("Mensaje", "Permiso denegado");
 
@@ -165,25 +164,25 @@ public class ViernesSantoActivity extends AppCompatActivity
                 finish();
                 return true;
             case R.id.noticias:
-//                lblMensaje.setText("¡Últimas Noticias!");
+
                 Intent i = new Intent(this, NoticiasActivity.class);
                 startActivity(i);
                 finish();
                 return true;
             case R.id.fotos:
-//                lblMensaje.setText("¡Nuestras Fotos!");;
+
                 Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
+
                 Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
                 finish();
                 return true;
             case R.id.IniSesion:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
+
                 Intent i4 = new Intent(this, LoginActivity.class);
                 startActivity(i4);
                 finish();

@@ -62,8 +62,6 @@ public class FotosActivity extends AppCompatActivity {
         i8 = findViewById(R.id.imageView8);
 
 
-
-
         Picasso.get().load(img1).into(i);
         Picasso.get().load(img2).into(i2);
         Picasso.get().load(img3).into(i3);
@@ -73,55 +71,7 @@ public class FotosActivity extends AppCompatActivity {
         Picasso.get().load(img7).into(i7);
         Picasso.get().load(img8).into(i8);
 
-
-
-
-
-
-       /* wv = (WebView) findViewById(R.id.wv);
-        wv.loadUrl("https://drive.google.com/drive/folders/1kdKI5hQfGfD3eXxZD-HM31p5VPZjDwVq?usp=sharing");
-
-        wv.setWebViewClient(new client());
-        WebSettings ws = wv.getSettings();
-        ws.setJavaScriptEnabled(true);
-        wv.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        wv.clearCache(true);
-        wv.clearHistory();
-
-        wv.setDownloadListener(new DownloadListener() {
-            @Override
-            public void onDownloadStart(String url, String s1, String s2, String s3, long l) {
-
-                DownloadManager.Request req = new DownloadManager.Request(Uri.parse(url));
-                req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                dm.enqueue(req);
-
-                Toast.makeText(getApplicationContext(), "Downloading started.....", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
     }
-
-    private class client extends WebViewClient {
-
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-        }
-    }
-
 
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -139,25 +89,25 @@ public class FotosActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.noticias:
-//                lblMensaje.setText("¡Últimas Noticias!");
+
                 Intent i = new Intent(this, NoticiasActivity.class);
                 startActivity(i);
                 finish();
                 return true;
             case R.id.fotos:
-//                lblMensaje.setText("¡Nuestras Fotos!");;
+
                 Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
+
                 Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
                 finish();
                 return true;
             case R.id.IniSesion:
-//                lblMensaje.setText("¡Viernes Santo y Nuestro Recorrido!");;
+
                 Intent i4 = new Intent(this, LoginActivity.class);
                 startActivity(i4);
                 finish();
@@ -166,7 +116,5 @@ public class FotosActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 
 }
