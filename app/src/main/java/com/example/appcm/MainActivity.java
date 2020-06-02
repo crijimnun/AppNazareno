@@ -60,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i4);
                 finish();
                 return true;
+            case R.id.registro:
+                Intent i5 = new Intent(this, RegistroActivity.class);
+                startActivity(i5);
+                finish();
+                return true;
+            case R.id.profile:
+                Intent i6 = new Intent(this, ProfileActivity.class);
+                startActivity(i6);
+                finish();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

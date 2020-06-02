@@ -24,5 +24,11 @@
     <item android:id="@+id/IniSesion" android:title="@string/menu_registro"
         android:icon="@android:drawable/ic_menu_preferences">
     </item>
+    <item android:id="@+id/registro" android:title="Registrarse"
+        android:icon="@android:drawable/ic_menu_preferences">
+    </item>
+    <item android:id="@+id/profile" android:title="Mi Perfil"
+        android:icon="@android:drawable/ic_menu_preferences">
+    </item>
 
     </menu>

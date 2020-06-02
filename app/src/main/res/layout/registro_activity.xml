@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".LoginActivity">>
+    tools:context=".RegistroActivity">
 
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Nombre"/>
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -32,11 +36,19 @@
 
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
+            android:text="REGISTRAR USUARIO"
             android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"/>
+        <Button
+            android:id="@+id/btnSendToLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ya tengo cuenta"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>

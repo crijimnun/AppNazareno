@@ -1,40 +1,37 @@
 package com.example.appcm;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
 
+public class RegistroActivity extends AppCompatActivity {
 
+    private EditText mEditTextName;
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
-    private Button mBtnLogin;
+    private Button mBtnRegister;
+    private Button mSendToLogin;
 
+    private String name;
     private String email;
     private String password;
 
@@ -44,65 +41,90 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.registro_activity);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        mEditTextName = (EditText) findViewById(R.id.editTextName);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        mBtnLogin = (Button) findViewById(R.id.btnLogin);
+        mBtnRegister = (Button) findViewById(R.id.btnRegister);
+        mSendToLogin = (Button) findViewById(R.id.btnSendToLogin);
 
-        mBtnLogin.setOnClickListener(new View.OnClickListener() {
+        mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                name = mEditTextName.getText().toString();
                 email = mEditTextEmail.getText().toString();
                 password = mEditTextPassword.getText().toString();
 
-                if(!email.isEmpty() && !password.isEmpty()){
+                if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
                     if(password.length() >= 6) {
-                        loginUser();
+                        registerUser();
                     }else{
-                        Toast.makeText(LoginActivity.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
 
                     }
                 }else{
-                    Toast.makeText(LoginActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistroActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+
+        });
+
+        mSendToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
 
             }
         });
 
+
     }
 
-    private void loginUser(){
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    private void registerUser(){
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-                    finish();
+                if (task.isSuccessful()){
+
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("name", name);
+                    map.put("email", email);
+                    map.put("password", password);
+
+                    String id = mAuth.getCurrentUser().getUid();
+
+                    mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task2) {
+                            if(task2.isSuccessful()){
+                                startActivity(new Intent(RegistroActivity.this, ProfileActivity.class));
+                                finish();
+                            }else{
+                                Toast.makeText(RegistroActivity.this, "No se pudo registrar este usuario correctamente", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    });
+
                 }else{
-                    Toast.makeText(LoginActivity.this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistroActivity.this, "No se pudo registrar este usuario", Toast.LENGTH_SHORT).show();
 
                 }
-
             }
         });
 
     }
-
-
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
 
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -113,21 +135,25 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.noticias:
+
                 Intent i = new Intent(this, NoticiasActivity.class);
                 startActivity(i);
                 finish();
                 return true;
             case R.id.fotos:
+
                 Intent i1 = new Intent(this, FotosActivity.class);
                 startActivity(i1);
                 finish();
                 return true;
             case R.id.viernesSanto:
+
                 Intent i2 = new Intent(this, ViernesSantoActivity.class);
                 startActivity(i2);
                 finish();
                 return true;
             case R.id.IniSesion:
+
                 Intent i4 = new Intent(this, LoginActivity.class);
                 startActivity(i4);
                 finish();
@@ -146,4 +172,5 @@ public class LoginActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
