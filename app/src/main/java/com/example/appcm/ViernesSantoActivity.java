@@ -35,6 +35,7 @@ public class ViernesSantoActivity extends AppCompatActivity
 
     private GoogleMap mapa;
     private DatabaseReference mDatabase;
+    private Marker marker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,9 +126,12 @@ public class ViernesSantoActivity extends AppCompatActivity
                     Double latitud = Double.parseDouble(dataSnapshot.child("Latitud").getValue().toString());
                     Double longitud = Double.parseDouble(dataSnapshot.child("Longitud").getValue().toString());
 
+                    if(marker != null)
+                        marker.remove();
+
                     MarkerOptions mark = new MarkerOptions().position(new LatLng(latitud, longitud)).title("Cofradia");
 
-                    googleMap.addMarker(mark);
+                    marker = googleMap.addMarker(mark);
 
                 }
             }
