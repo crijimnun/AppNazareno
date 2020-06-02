@@ -7,9 +7,19 @@
     -->
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/noticias" android:title="@string/menu_noticias"
+
+<item android:id="@+id/pagHome" android:title="@string/menu_inicio"
     android:icon="@android:drawable/ic_menu_preferences">
 </item>
+
+<item android:id="@+id/profile" android:title="Mi Perfil"
+    android:icon="@android:drawable/ic_menu_preferences">
+</item>
+
+<item android:id="@+id/noticias" android:title="@string/menu_noticias"
+android:icon="@android:drawable/ic_menu_preferences">
+</item>
+
 <item android:id="@+id/fotos" android:title="@string/menu_fotos"
     android:icon="@android:drawable/ic_menu_preferences">
 </item>
@@ -18,17 +28,15 @@
     android:icon="@android:drawable/ic_menu_preferences">
 </item>
 
-    <item android:id="@+id/pagHome" android:title="@string/menu_inicio"
-        android:icon="@android:drawable/ic_menu_preferences">
-    </item>
-    <item android:id="@+id/IniSesion" android:title="@string/menu_registro"
-        android:icon="@android:drawable/ic_menu_preferences">
-    </item>
-    <item android:id="@+id/registro" android:title="Registrarse"
-        android:icon="@android:drawable/ic_menu_preferences">
-    </item>
-    <item android:id="@+id/profile" android:title="Mi Perfil"
-        android:icon="@android:drawable/ic_menu_preferences">
-    </item>
+<item android:id="@+id/registro" android:title="Registrarse"
+    android:icon="@android:drawable/ic_menu_preferences">
+</item>
 
-    </menu>
+
+<item android:id="@+id/IniSesion" android:title="@string/menu_registro"
+    android:icon="@android:drawable/ic_menu_preferences">
+</item>
+
+
+
+</menu>
