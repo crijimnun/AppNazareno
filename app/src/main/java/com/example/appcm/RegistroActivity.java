@@ -48,7 +48,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         mEditTextName = (EditText) findViewById(R.id.editTextName);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        mEditTextPassword = (EditText) findViewById(R.id.editTextContraseña);
         mBtnRegister = (Button) findViewById(R.id.btnRegister);
         mSendToLogin = (Button) findViewById(R.id.btnSendToLogin);
 

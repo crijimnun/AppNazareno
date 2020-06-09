@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,24 +52,31 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void getUserInfo(){
-        String id = mAuth.getCurrentUser().getUid();
-        mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    String name = dataSnapshot.child("name").getValue().toString();
-                    String email = dataSnapshot.child("email").getValue().toString();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user==null) {
+            mTextViewName.setText("Por favor, inicie sesion");
+            mTextViewEmail.setText("");
+            mBtnSignout.setText("Volver a inicio");
+        } else {
+            String id = mAuth.getCurrentUser().getUid();
+            mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String name = dataSnapshot.child("name").getValue().toString();
+                        String email = dataSnapshot.child("email").getValue().toString();
 
-                    mTextViewName.setText(name);
-                    mTextViewEmail.setText(email);
+                        mTextViewName.setText(name);
+                        mTextViewEmail.setText(email);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
